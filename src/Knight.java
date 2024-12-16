@@ -12,14 +12,10 @@ public class Knight extends Piece {
         List<int[]> possibilities = new ArrayList<>();
         int[] x;
 
-
         try {
-
             if (cb.getSquares()[pos[0] - 2][pos[1] + 1] == null) {
-
                 x = new int[]{pos[0] - 2, pos[1] + 1};
                 possibilities.add(x);
-
             } else if (cb.getSquares()[pos[0] - 2][pos[1] + 1].getColor() != color) {
                 x = new int[]{pos[0] - 2, pos[1] + 1};
                 possibilities.add(x);
