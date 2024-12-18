@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pawn extends Piece{
+public class Pawn extends Piece {
 
 
     public Pawn(int color) {
@@ -9,14 +9,14 @@ public class Pawn extends Piece{
     }
 
     @Override
-    public List<int[]> play(Chessboard cb, int[] pos){
+    public List<int[]> play(Chessboard cb, int[] pos) {
 
-            List<int[]> possibilities = new ArrayList<>();
-            int[] x;
+        List<int[]> possibilities = new ArrayList<>();
+        int[] x;
 
-            if(this.color == 1){
+        if (this.color == 1) {
 
-            if(cb.getSquares()[pos[0] - 1][pos[1]] == null){
+            if (cb.getSquares()[pos[0] - 1][pos[1]] == null) {
 
                 x = new int[]{pos[0] - 1, pos[1]};
 
@@ -24,33 +24,37 @@ public class Pawn extends Piece{
 
             }
 
-            if(cb.getSquares()[pos[0] - 1][pos[1] + 1] != null){
+            try {
 
-                if(cb.getSquares()[pos[0] - 1][pos[1] + 1].getColor() == 2){
+                if (cb.getSquares()[pos[0] - 1][pos[1] + 1] != null) {
 
-                x = new int[]{pos[0] - 1, pos[1] + 1};
+                    if (cb.getSquares()[pos[0] - 1][pos[1] + 1].getColor() == 2) {
 
-                possibilities.add(x);
+                        x = new int[]{pos[0] - 1, pos[1] + 1};
 
-                }
+                        possibilities.add(x);
 
-            }
-
-            if(cb.getSquares()[pos[0] - 1][pos[1] - 1] != null){
-
-                if(cb.getSquares()[pos[0] - 1][pos[1] - 1].getColor() == 2){
-
-                x = new int[]{pos[0] - 1, pos[1] - 1};
-
-                possibilities.add(x);
+                    }
 
                 }
 
+                if (cb.getSquares()[pos[0] - 1][pos[1] - 1] != null) {
+
+                    if (cb.getSquares()[pos[0] - 1][pos[1] - 1].getColor() == 2) {
+
+                        x = new int[]{pos[0] - 1, pos[1] - 1};
+
+                        possibilities.add(x);
+
+                    }
+
+                }
+            } catch (Exception _) {
             }
 
-            if(firstPlay){
+            if (firstPlay) {
 
-                if(cb.getSquares()[pos[0] - 2][pos[1]] == null && cb.getSquares()[pos[0] - 1][pos[1]] == null){
+                if (cb.getSquares()[pos[0] - 2][pos[1]] == null && cb.getSquares()[pos[0] - 1][pos[1]] == null) {
 
                     x = new int[]{pos[0] - 2, pos[1]};
 
@@ -60,9 +64,9 @@ public class Pawn extends Piece{
 
             }
 
-        }else{
+        } else {
 
-            if(cb.getSquares()[pos[0] + 1][pos[1]] == null){
+            if (cb.getSquares()[pos[0] + 1][pos[1]] == null) {
 
                 x = new int[]{pos[0] + 1, pos[1]};
 
@@ -70,33 +74,38 @@ public class Pawn extends Piece{
 
             }
 
-            if(cb.getSquares()[pos[0] + 1][pos[1] + 1] != null){
+            try {
 
-                if(cb.getSquares()[pos[0] + 1][pos[1] + 1].getColor() == 1){
+                if (cb.getSquares()[pos[0] + 1][pos[1] + 1] != null) {
 
-                    x = new int[]{pos[0] + 1, pos[1] + 1};
+                    if (cb.getSquares()[pos[0] + 1][pos[1] + 1].getColor() == 1) {
 
-                    possibilities.add(x);
+                        x = new int[]{pos[0] + 1, pos[1] + 1};
 
-                }
+                        possibilities.add(x);
 
-            }
-
-            if(cb.getSquares()[pos[0] + 1][pos[1] - 1] != null){
-
-                if(cb.getSquares()[pos[0] + 1][pos[1] - 1].getColor() == 1){
-
-                    x = new int[]{pos[0] + 1, pos[1] - 1};
-
-                    possibilities.add(x);
+                    }
 
                 }
 
+                if (cb.getSquares()[pos[0] + 1][pos[1] - 1] != null) {
+
+                    if (cb.getSquares()[pos[0] + 1][pos[1] - 1].getColor() == 1) {
+
+                        x = new int[]{pos[0] + 1, pos[1] - 1};
+
+                        possibilities.add(x);
+
+                    }
+
+                }
+
+            } catch (Exception _) {
             }
 
-            if(firstPlay){
+            if (firstPlay) {
 
-                if(cb.getSquares()[pos[0] + 2][pos[1]] == null && cb.getSquares()[pos[0] + 1][pos[1]] == null){
+                if (cb.getSquares()[pos[0] + 2][pos[1]] == null && cb.getSquares()[pos[0] + 1][pos[1]] == null) {
 
                     x = new int[]{pos[0] + 2, pos[1]};
 
@@ -108,9 +117,8 @@ public class Pawn extends Piece{
 
         }
 
-            return possibilities;
+        return possibilities;
     }
-
 
 
 }

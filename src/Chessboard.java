@@ -131,6 +131,45 @@ public class Chessboard {
 
                 for (int[] move : moves) {
 
+                    try {
+
+                        if (squares[move[0]][move[1]].getType() == Type.ROOK && squares[pos[0]][pos[1]].getType() == Type.KING) {
+
+                            if (move[0] == yourPlay[0] && move[1] == yourPlay[1]) {
+
+                                if (move[1] > pos[1]) {
+
+                                    squares[pos[0]][pos[1] + 2] = squares[pos[0]][pos[1]];
+                                    squares[pos[0]][pos[1]] = null;
+                                    squares[pos[0]][pos[1] + 1] = squares[move[0]][move[1]];
+                                    squares[move[0]][move[1]] = null;
+
+                                    success = true;
+
+                                    break;
+
+                                }
+
+                                if (move[1] < pos[1]) {
+
+                                    squares[pos[0]][pos[1] - 2] = squares[pos[0]][pos[1]];
+                                    squares[pos[0]][pos[1]] = null;
+                                    squares[pos[0]][pos[1] - 1] = squares[move[0]][move[1]];
+                                    squares[move[0]][move[1]] = null;
+
+                                    success = true;
+
+                                    break;
+
+                                }
+
+                            }
+
+                        }
+
+                    } catch (Exception _) {
+                    }
+
                     if (move[0] == yourPlay[0] && move[1] == yourPlay[1]) {
 
                         squares[pos[0]][pos[1]].setFirstPlay(false);
@@ -157,6 +196,7 @@ public class Chessboard {
 
 
                     break;
+
                 } else {
                     System.out.println("Invalid play");
                 }

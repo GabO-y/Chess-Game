@@ -8,12 +8,68 @@ public class King extends Piece {
         super(Type.KING, color);
     }
 
+
     @Override
     public List<int[]> play(Chessboard cb, int[] pos) {
 
         List<int[]> possibilities = new ArrayList<>();
         int[] move;
 
+        if (firstPlay) {
+
+            for (int y = pos[1] + 1; y != 9; y++) {
+
+                if (cb.getSquares()[pos[0]][y] != null) {
+
+                    if (cb.getSquares()[pos[0]][y].getType() == Type.ROOK) {
+
+                        if (cb.getSquares()[pos[0]][y].getColor() == color) {
+
+                            if (cb.getSquares()[pos[0]][y].firstPlay) {
+
+                                possibilities.add(new int[]{pos[0], y});
+
+                            } else {
+                                break;
+                            }
+                        } else {
+                            break;
+                        }
+                    } else {
+                        break;
+                    }
+
+                }
+
+            }
+
+            for (int y = pos[1] - 1; y != 0; y--) {
+
+                if (cb.getSquares()[pos[0]][y] != null) {
+
+                    if (cb.getSquares()[pos[0]][y].getType() == Type.ROOK) {
+
+                        if (cb.getSquares()[pos[0]][y].getColor() == color) {
+
+                            if (cb.getSquares()[pos[0]][y].firstPlay) {
+
+                                possibilities.add(new int[]{pos[0], y});
+
+                            } else {
+                                break;
+                            }
+                        } else {
+                            break;
+                        }
+                    } else {
+                        break;
+                    }
+
+                }
+
+            }
+
+        }
 
         int x = pos[0] - 1;
         int y = pos[1];
@@ -170,12 +226,9 @@ public class King extends Piece {
 
         }
 
-        for (int[] moves : possibilities) {
-            System.out.println(moves[0] + " " + moves[1]);
-        }
-
         return possibilities;
 
     }
+
 
 }
