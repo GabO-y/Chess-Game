@@ -103,6 +103,7 @@ public class Pawn extends Piece {
             } catch (Exception _) {
             }
 
+            try{
             if (firstPlay) {
 
                 if (cb.getSquares()[pos[0] + 2][pos[1]] == null && cb.getSquares()[pos[0] + 1][pos[1]] == null) {
@@ -114,6 +115,8 @@ public class Pawn extends Piece {
                 }
 
             }
+
+            }catch(Exception _){}
 
         }
 

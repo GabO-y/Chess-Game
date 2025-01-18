@@ -61,6 +61,8 @@ public class Chessboard {
         squares[8][4] = new Queen(1);
         squares[1][4] = new Queen(2);
 
+     
+
 
         while (true) {
 
@@ -170,6 +172,71 @@ public class Chessboard {
                     } catch (Exception _) {
                     }
 
+                    if(squares[pos[0]][pos[1]].getType() == Type.PAWN){
+
+                        if((yourPlay[0] == 1 && yourPlay[1] == move[1] )|| (yourPlay[0] == 8 && yourPlay[1] == move[1])){
+
+
+                            System.out.println("1 - Knight");
+                            System.out.println("2 - Bishop");
+                            System.out.println("3 - Hook");
+                            System.out.println("4 - Queen");
+
+                            System.out.print("Choice the new piece: ");
+                            int choice;
+
+                            while(true){
+
+                                try{
+
+
+
+                                    choice = Integer.parseInt(sc.nextLine());
+
+
+                                    if(choice > 4 || choice < 1){
+
+                                        System.out.println("Invalid choice");
+
+                                        continue;
+                                    }
+
+                                    switch (choice){
+
+                                        case 1 -> {
+                                            squares[yourPlay[0]][yourPlay[1]] = new Knight(playerTime);
+                                            squares[pos[0]][pos[1]] = null;
+                                        }
+                                        case 2 -> {
+                                            squares[yourPlay[0]][yourPlay[1]] = new Bishop(playerTime);
+                                            squares[pos[0]][pos[1]] = null;
+                                        }
+                                        case 3 -> {
+                                            squares[yourPlay[0]][yourPlay[1]] = new Rook(playerTime);
+                                            squares[pos[0]][pos[1]] = null;
+                                        }
+                                        case 4 -> {
+                                            squares[yourPlay[0]][yourPlay[1]] = new Queen(playerTime);
+                                            squares[pos[0]][pos[1]] = null;
+                                        }
+
+                                    }
+
+                                    success = true;
+
+                                    break;
+
+                                }catch(Exception _){
+                                    System.out.println("Invalid choice");
+                                }
+
+                            }
+
+                            break;
+                        }
+
+                    }
+
                     if (move[0] == yourPlay[0] && move[1] == yourPlay[1]) {
 
                         squares[pos[0]][pos[1]].setFirstPlay(false);
@@ -184,7 +251,11 @@ public class Chessboard {
 
                     }
 
+
+
                 }
+
+
 
                 if (success) {
 
